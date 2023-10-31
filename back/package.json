@@ -1,0 +1,21 @@
+{
+  "name": "back",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "db:dev:rm": "docker compose rm dev-db -s -f -v",
+    "db:dev:up": "docker compose up dev-db -d",
+    "prisma:dev:deploy": "prisma migrate deploy",
+    "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 1 && yarn prisma:dev:deploy"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.5.2",
+    "elysia": "latest",
+    "prisma": "^5.5.2"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}
